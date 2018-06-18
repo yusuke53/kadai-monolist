@@ -12,10 +12,10 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">新規登録</a></li>
+                    <li><a href="{{ route('signup.get') }}">新規登録</a></li>
                     <li><a href="#">ログイン</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-</header>We’re using "{{ secure_asset("images/logo.png") }}" here, so again, we’ll have to add public/images/logo.png in the public/ directory. We’ll do that later.
+</header>
