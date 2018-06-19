@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use \App\Item;
+
 class ItemsController extends Controller
 {
     /**
@@ -27,7 +29,7 @@ class ItemsController extends Controller
         $items = [];
         if ($keyword) {
             $client = new \RakutenRws_Client();
-            $client->setApplicationId(env('1092547967697892372'));
+            $client->setApplicationId(env('RAKUTEN_APPLICATION_ID'));
 
             $rws_response = $client->execute('IchibaItemSearch', [
                 'keyword' => $keyword,
@@ -60,7 +62,7 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -69,9 +71,15 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+        public function show($id)
     {
-        //
+      $item = Item::find($id);
+      $want_users = $item->want_users;
+
+      return view('items.show', [
+          'item' => $item,
+          'want_users' => $want_users,
+      ]);
     }
 
     /**
