@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Item;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
      public function show($id)
     {
